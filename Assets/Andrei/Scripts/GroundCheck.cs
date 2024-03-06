@@ -9,7 +9,7 @@ public class GroundCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetComponentInParent<Movement>().isGrounded = Physics.Raycast(transform.position,-transform.up,groundCheckLenght);
+        GetComponentInParent<MovementGlide>().isGrounded = Physics.Raycast(transform.position,-transform.up,groundCheckLenght);
     }
 
     private void OnDrawGizmos()
