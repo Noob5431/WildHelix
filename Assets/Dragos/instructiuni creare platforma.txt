@@ -1,0 +1,3 @@
+1. Se adauga PlatformDetection pe orice componenta din scena (probabil pe un obiect gameManager)
+2. Se adauga un cub in scena (poate fi defapt orice, sa aiba collider doar)
+3. Obiectului adaugat i se ataseaza componenta MovingPlatform
