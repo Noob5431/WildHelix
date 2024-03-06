@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class gamemanager : MonoBehaviour
 {
-    public float[] highScore = { -1, -1, -1 };
     public float musicVolume, effectVolume, mouseSensitivity;
     Slider musicSlider, effectSlider, mouseSensitivitySlider;
     bool firstTime = true;

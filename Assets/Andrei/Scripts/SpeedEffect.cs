@@ -19,7 +19,7 @@ public class SpeedEffect : MonoBehaviour
 
     private void Update()
     {
-        speed_current = GetComponent<Rigidbody>().velocity.magnitude;
+        /*speed_current = GetComponent<Rigidbody>().velocity.magnitude;
         FOV_current = (speed_current - speed_min) / (speed_max - speed_min) * (FOV_max - FOV_min) + FOV_min;
         FOV_current = Mathf.Clamp(FOV_current,FOV_min, FOV_max);
         if(appliedFov < FOV_current)
@@ -31,6 +31,6 @@ public class SpeedEffect : MonoBehaviour
             appliedFov -= decrease_speed * Time.deltaTime;
         }
         appliedFov = Mathf.Clamp(appliedFov, FOV_min, FOV_max);
-        GetComponentInChildren<Camera>().fieldOfView = appliedFov;
+        GetComponentInChildren<Camera>().fieldOfView = appliedFov;*/
     }
 }

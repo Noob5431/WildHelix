@@ -86,10 +86,6 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R) && Time.timeScale > 0.01)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
         WallCheck();
         CheckForWallRun();
         if (isGrounded) bonusForce = Vector3.zero;
@@ -202,6 +198,7 @@ public class Movement : MonoBehaviour
                 float dx = (final_velocity * Time.deltaTime) / time_to_final_velocity;
                 velocity += dx;
             }
+            if (velocity > final_velocity) velocity = final_velocity;
         }
 
         //change of basis from local to global of moveVector
@@ -319,9 +316,9 @@ public class Movement : MonoBehaviour
     {
         current_rigidbody.velocity = new Vector3(current_rigidbody.velocity.x, 0, current_rigidbody.velocity.z);
         Vector3 forceToApply = transform.up * climbJumpUpSpeed + frontWallHit.normal * climbJumpBackSpeed;
-        current_rigidbody.AddForce(new Vector3(0, forceToApply.y, 0),ForceMode.VelocityChange);
+        current_rigidbody.AddForce(new Vector3(0, forceToApply.y, 0), ForceMode.VelocityChange);
         forceToApply.y = 0;
-        if(bonusForce.magnitude < forceToApply.magnitude)
+        if (bonusForce.magnitude < forceToApply.magnitude)
             bonusForce += forceToApply;
         GetComponentInChildren<AudioManager>().Jump();
     }
@@ -333,8 +330,8 @@ public class Movement : MonoBehaviour
         Vector3 forceToApply = transform.up * runWallJumpUpForce + current_hit.normal * runWallJumpBackForce;
         current_rigidbody.AddForce(new Vector3(0, forceToApply.y, 0), ForceMode.VelocityChange);
         forceToApply.y = 0;
-        if(bonusForce.magnitude < forceToApply.magnitude)
-            bonusForce += forceToApply;
+        /*if(bonusForce.magnitude < forceToApply.magnitude)
+            bonusForce += forceToApply;*/
         GetComponentInChildren<AudioManager>().Jump();
     }
 

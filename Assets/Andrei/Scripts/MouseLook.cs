@@ -25,7 +25,7 @@ public class MouseLook : MonoBehaviour
         if (Time.timeScale > 0.01)
         {
             mouseDelta = new Vector2(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
-            lookRotation += mouseDelta * lookSpeed;
+            lookRotation += mouseDelta * lookSpeed * Time.deltaTime;
             lookRotation.x = Mathf.Clamp(lookRotation.x, -90, 90);
 
             transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, lookRotation.y, transform.localEulerAngles.z);
