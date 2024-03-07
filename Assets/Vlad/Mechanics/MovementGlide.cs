@@ -68,6 +68,7 @@ public class MovementGlide : MonoBehaviour
     float initialDrag;
     [SerializeField]
     float glideDrag;
+    bool isGliding = false;
 
     private void Start()
     {
@@ -252,19 +253,14 @@ public class MovementGlide : MonoBehaviour
 
     public void OnRun()
     {
-        Vector2 input_trans = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 input_trans = (!isGliding || isGrounded) ? new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) : new Vector2(0, Input.GetAxis("Vertical"));
         input_trans.Normalize();
         moveVector = new Vector3(input_trans.x, 0, input_trans.y);
     }
 
     public void OnJump()
     {
-        /*if(canClimb && wallLookAngle<maxWallLookAngle)
-        {
-            if (!isClimbing && climbTimer > 0) StartClimbing();
-            if (climbTimer > 0) climbTimer -= Time.deltaTime;
-            if (climbTimer < 0) StopClimbing();
-        }*/
+        this.isGliding = false;
         current_rigidbody.drag = initialDrag;
         if (isGrounded)
         {
@@ -277,11 +273,13 @@ public class MovementGlide : MonoBehaviour
     {
         initialDrag = current_rigidbody.drag;
         current_rigidbody.drag = glideDrag;
+        isGliding = true;
     }
 
     public void CancelGlide()
     {
         current_rigidbody.drag = initialDrag;
+        isGliding = false;
     }
 
     void StartSwing()
@@ -362,17 +360,4 @@ public class MovementGlide : MonoBehaviour
             bonusForce += forceToApply;
         GetComponentInChildren<AudioManager>().Jump();
     }
-
-    /*private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        //Gizmos.DrawSphere(gunTip.position, maxSwingDistance);
-        Debug.DrawRay(gunTip.position, cam.forward * maxSwingDistance, Color.red);
-        Debug.DrawRay(transform.position, transform.forward * wallDetectionLenght, Color.red);
-        Debug.DrawRay(transform.position, transform.right * lateralWallDetectionLenght, Color.red);
-        Debug.DrawRay(transform.position, -transform.right * lateralWallDetectionLenght, Color.red);
-        Gizmos.DrawSphere(cam.forward * maxSwingDistance + transform.position, grappleRadius);
-        Gizmos.DrawSphere(transform.forward * wallDetectionLenght + transform.position, wallSphereRadius);
-        //Gizmos.DrawSphere(gunTip.position, wallDetectionLenght);
-    }*/
 }
