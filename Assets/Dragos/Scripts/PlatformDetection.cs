@@ -34,13 +34,13 @@ public class PlatformDetection : MonoBehaviour
         RaycastHit hit;
         Transform playerOrigin = Camera.main.transform;
 
-        if (Physics.Raycast(playerOrigin.position, playerOrigin.forward * maxGrabDistance, out hit))
+        if (Physics.Raycast(playerOrigin.position, playerOrigin.forward, out hit, maxGrabDistance, int.MaxValue, QueryTriggerInteraction.Ignore))
         {
             GameObject objectHit = hit.transform.gameObject;
             mGrabbedPlatform = objectHit.GetComponent<MovingPlatform>();
             if (mGrabbedPlatform != null)
             {
-                mGrabbedPlatform.GrabPlatform(hit.distance);
+                mGrabbedPlatform.GrabPlatform(hit.distance, hit.point);
             }
         }
     }
