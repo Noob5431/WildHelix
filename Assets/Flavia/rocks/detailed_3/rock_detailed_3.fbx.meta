@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Rock
-    second: {fileID: 2100000, guid: 364d5d7679f640a42bd4936081a5c047, type: 2}
+      name: Lava.001
+    second: {fileID: 2100000, guid: ac46b2f1f21b8a94d91f14d0301b2419, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
