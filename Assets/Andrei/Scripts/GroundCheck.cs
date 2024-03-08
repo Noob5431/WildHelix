@@ -14,6 +14,14 @@ public class GroundCheck : MonoBehaviour
         {
             movementGlide.isGrounded = Physics.Raycast(transform.position, -transform.up, groundCheckLenght);
         }
+
+        FireAbility fireAbility = GetComponentInParent<FireAbility>();
+        if(fireAbility != null)
+        {
+            RaycastHit hit;
+            fireAbility.isOnPlatform = Physics.Raycast(transform.position, -transform.up, out hit, groundCheckLenght, LayerMask.GetMask("FirePlatform"));
+            fireAbility.platformUnderPlayer = hit.collider;
+        }
     }
 
     private void OnDrawGizmos()
