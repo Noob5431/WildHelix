@@ -9,7 +9,19 @@ public class GroundCheck : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetComponentInParent<Movement>().isGrounded = Physics.Raycast(transform.position,-transform.up,groundCheckLenght);
+        MovementGlide movementGlide = GetComponentInParent<MovementGlide>();
+        if (movementGlide != null)
+        {
+            movementGlide.isGrounded = Physics.Raycast(transform.position, -transform.up, groundCheckLenght);
+        }
+
+        FireAbility fireAbility = GetComponentInParent<FireAbility>();
+        if(fireAbility != null)
+        {
+            RaycastHit hit;
+            fireAbility.isOnPlatform = Physics.Raycast(transform.position, -transform.up, out hit, groundCheckLenght, LayerMask.GetMask("FirePlatform"));
+            fireAbility.platformUnderPlayer = hit.collider;
+        }
     }
 
     private void OnDrawGizmos()
