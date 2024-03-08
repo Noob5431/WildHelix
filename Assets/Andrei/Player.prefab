@@ -1928,7 +1928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5412421864188476251}
-  - component: {fileID: 2635351623310895081}
+  - component: {fileID: 8536058349986204180}
   m_Layer: 0
   m_Name: GroundChecker
   m_TagString: Untagged
@@ -1951,7 +1951,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 729161712800602520}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2635351623310895081
+--- !u!114 &8536058349986204180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1960,7 +1960,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5770570736973129690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b951b415e2c414e8451182c8e8e3f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 692562ddfc716e640b3d9bf83f447ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheckLenght: 0.5
