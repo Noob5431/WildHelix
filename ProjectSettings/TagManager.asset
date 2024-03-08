@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - grapple
+  - creature
+  - wallRun
   layers:
   - Default
   - TransparentFX
