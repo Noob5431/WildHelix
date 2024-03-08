@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class FireAbility : MonoBehaviour
 {
@@ -8,9 +10,11 @@ public class FireAbility : MonoBehaviour
     LayerMask maskFire;
     public bool isOnPlatform;
     public Collider platformUnderPlayer;
-
+    
     Transform initialParent;
     [SerializeField] float abilityMaxDistance = 30;
+
+    [SerializeField]GameObject pressText;
 
     private void Start()
     {
@@ -29,8 +33,10 @@ public class FireAbility : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, abilityMaxDistance, maskFire))
         {
+            pressText.SetActive(true);
             LightFire(hit);
         }
+        else pressText.SetActive(false);
 
 
         if (isOnPlatform)
