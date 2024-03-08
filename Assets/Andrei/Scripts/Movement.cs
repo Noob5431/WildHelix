@@ -73,6 +73,11 @@ public class Movement : MonoBehaviour
     bool hasJumped = false;
     bool wasGrounded = true;
 
+    float initialDrag;
+    [SerializeField]
+    float glideDrag;
+    bool isGliding = false;
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -126,10 +131,19 @@ public class Movement : MonoBehaviour
         {
             StopSwing();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             OnJump();
         }
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)
+        {
+            OnGlide();
+        }
+        if (Input.GetKeyUp(KeyCode.Space) && !isGrounded)
+        {
+            CancelGlide();
+        }
+
         if (canClimb && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle)
         {
             if (!isClimbing && climbTimer > 0) StartClimbing();
@@ -265,7 +279,9 @@ public class Movement : MonoBehaviour
 
     public void OnRun()
     {
-        Vector2 input_trans = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector2 input_trans = (!isGliding || isGrounded) 
+            ? new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"))
+            : new Vector2(0, Input.GetAxis("Vertical"));
         input_trans.Normalize();
         moveVector = new Vector3(input_trans.x, 0, input_trans.y);
         if (currentLatMovTimeRemain > 0.01) moveVector = Vector3.zero;
@@ -367,6 +383,19 @@ public class Movement : MonoBehaviour
         GetComponentInChildren<AudioManager>().Jump();
 
         currentLatMovTimeRemain = deactivateLateralMovementTime;
+    }
+
+    public void OnGlide()
+    {
+        initialDrag = current_rigidbody.drag;
+        current_rigidbody.drag = glideDrag;
+        isGliding = true;
+    }
+
+    public void CancelGlide()
+    {
+        current_rigidbody.drag = initialDrag;
+        isGliding = false;
     }
 
     /*private void OnDrawGizmos()
