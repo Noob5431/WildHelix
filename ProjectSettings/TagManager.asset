@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - grapple
-  - Fireplace
-  - FirePlatform
   layers:
   - Default
   - TransparentFX
@@ -14,8 +12,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Fireplace
+  - FirePlatform
   - 
   - 
   - 

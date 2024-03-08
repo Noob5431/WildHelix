@@ -6,7 +6,8 @@ public class PlatformSettings : MonoBehaviour
 {
     [SerializeField] Vector3 movePoint;
     [SerializeField] float speed;
-    [SerializeField] float delay;
+    [SerializeField] float delayStart;
+    [SerializeField] float delayEnd;
 
     public Vector3 GetMovePoint()
     {
@@ -18,8 +19,13 @@ public class PlatformSettings : MonoBehaviour
         return speed;
     }
 
-    public float GetDelay()
+    public float GetDelayStart()
     {
-        return delay;
+        return delayStart;
+    }
+
+    public float GetDelayEnd()
+    {
+        return delayEnd;
     }
 }
