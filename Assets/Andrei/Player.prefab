@@ -1355,7 +1355,7 @@ GameObject:
   - component: {fileID: 4387753336938438367}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1492,12 +1492,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26fd60391bc1ea547b98a1c8a9d8f575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
   jumpForce: 10
   thrustForce: 1000
-  initial_velocity: 20
+  initial_velocity: 10
   time_to_initial_velocity: 0.3
-  final_velocity: 20
+  final_velocity: 10
   time_to_final_velocity: 4
   velocity: 0
   cam: {fileID: 7187445357254193974}
@@ -1517,14 +1516,16 @@ MonoBehaviour:
   maxClimbTimer: 4
   climbJumpUpSpeed: 0
   climbJumpBackSpeed: 0
-  airDrag: 5
-  runWallJumpUpForce: 100
-  runWallJumpBackForce: 100
+  airDrag: 2
+  runWallJumpUpForce: 5
+  runWallJumpBackForce: 8
   isRunning: 0
   isWallRunning: 0
   wallRunningRotation: {x: 0, y: 0, z: 15}
   grappleRadius: 0.7
   lateralWallDetectionLenght: 1
+  deactivateLateralMovementTime: 5
+  bonusTimeToJump: 0.3
 --- !u!114 &1783458336376535586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,7 +1670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FOV_min: 60
-  FOV_max: 80
+  FOV_max: 60
   speed_min: 0
   speed_max: 0
   increase_speed: 10

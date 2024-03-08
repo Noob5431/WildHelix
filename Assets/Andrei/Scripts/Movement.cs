@@ -6,7 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField]
-    private float speed, jumpForce, thrustForce;
+    private float jumpForce, thrustForce;
     [SerializeField]
     public float initial_velocity, time_to_initial_velocity, final_velocity, time_to_final_velocity;
     [SerializeField]
@@ -64,6 +64,14 @@ public class Movement : MonoBehaviour
     float grappleRadius;
     [SerializeField]
     float lateralWallDetectionLenght;
+    [SerializeField]
+    float deactivateLateralMovementTime;
+    float currentLatMovTimeRemain;
+    [SerializeField]
+    float bonusTimeToJump;
+    float currentBonusTimeToJump;
+    bool hasJumped = false;
+    bool wasGrounded = true;
 
     private void Start()
     {
@@ -86,10 +94,31 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        //bonus jump time
+        currentBonusTimeToJump -= Time.deltaTime;
+
+        if(!hasJumped && !isGrounded && wasGrounded)
+        {
+            currentBonusTimeToJump = bonusTimeToJump;
+        }
+        if(!wasGrounded && isGrounded)
+        {
+            wasGrounded = isGrounded;
+            hasJumped = false;
+        }
+        if (wasGrounded && !isGrounded) wasGrounded = isGrounded;
+        
+
+        if (currentLatMovTimeRemain > 0) currentLatMovTimeRemain -= Time.deltaTime;
+
         WallCheck();
         CheckForWallRun();
-        if (isGrounded) bonusForce = Vector3.zero;
-        if (Input.GetMouseButtonDown(0) && !isSwinging)
+        if (isGrounded)
+        {
+            bonusForce = Vector3.zero;
+            currentLatMovTimeRemain = 0;
+        }
+            if (Input.GetMouseButtonDown(0) && !isSwinging)
         {
             StartSwing();
         }
@@ -172,8 +201,8 @@ public class Movement : MonoBehaviour
 
     void CheckForWallRun()
     {
-        wallRight = Physics.Raycast(transform.position, transform.right, out wallRightHit, lateralWallDetectionLenght);
-        wallLeft = Physics.Raycast(transform.position, -transform.right, out wallLeftHit, lateralWallDetectionLenght);
+        wallRight = Physics.Raycast(transform.position, transform.right, out wallRightHit, lateralWallDetectionLenght) && wallRightHit.collider.CompareTag("wallRun");
+        wallLeft = Physics.Raycast(transform.position, -transform.right, out wallLeftHit, lateralWallDetectionLenght) && wallLeftHit.collider.CompareTag("wallRun");
     }
 
     public void Run()
@@ -239,6 +268,7 @@ public class Movement : MonoBehaviour
         Vector2 input_trans = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         input_trans.Normalize();
         moveVector = new Vector3(input_trans.x, 0, input_trans.y);
+        if (currentLatMovTimeRemain > 0.01) moveVector = Vector3.zero;
     }
 
     public void OnJump()
@@ -249,8 +279,10 @@ public class Movement : MonoBehaviour
             if (climbTimer > 0) climbTimer -= Time.deltaTime;
             if (climbTimer < 0) StopClimbing();
         }*/
-        if (isGrounded)
+        if (isGrounded || currentBonusTimeToJump > 0.1)
         {
+            hasJumped = true;
+            currentBonusTimeToJump = 0;
             current_rigidbody.AddForce(jumpForce * transform.up, ForceMode.VelocityChange);
             GetComponentInChildren<AudioManager>().Jump();
         }
@@ -330,9 +362,11 @@ public class Movement : MonoBehaviour
         Vector3 forceToApply = transform.up * runWallJumpUpForce + current_hit.normal * runWallJumpBackForce;
         current_rigidbody.AddForce(new Vector3(0, forceToApply.y, 0), ForceMode.VelocityChange);
         forceToApply.y = 0;
-        /*if(bonusForce.magnitude < forceToApply.magnitude)
-            bonusForce += forceToApply;*/
+        if (bonusForce.magnitude < forceToApply.magnitude)
+            bonusForce += forceToApply;
         GetComponentInChildren<AudioManager>().Jump();
+
+        currentLatMovTimeRemain = deactivateLateralMovementTime;
     }
 
     /*private void OnDrawGizmos()

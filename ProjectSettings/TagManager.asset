@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - grapple
+  - wallRun
   layers:
   - Default
   - TransparentFX
