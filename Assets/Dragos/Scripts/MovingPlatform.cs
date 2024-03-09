@@ -17,6 +17,7 @@ public class MovingPlatform : MonoBehaviour
     private Material mErrorMaterial;
     private Material mNormalMaterial;
     private Vector3 mHitOffset;
+    private Vector3 mLastGoodPosition;
     private MovingPlatformCollision mMovingPlatformCollision;
 
     private void _checkForObstacles(Vector3 grabberPosition, Vector3 direction)
@@ -71,6 +72,11 @@ public class MovingPlatform : MonoBehaviour
         _checkForObstacles(grabberPosition, direction);
         _updateMaterialType();
 
+        if (!mHittingObstascle)
+        {
+            mLastGoodPosition = transform.position;
+        }
+
         Vector3 newPosition;
         if (mHittingObstascle && mObstacleLoc != Vector3.zero)
         {
@@ -87,6 +93,15 @@ public class MovingPlatform : MonoBehaviour
         }
         transform.position = newPosition;
     }
+
+    public void UpdateGrabDistance(float delta)
+    {
+        if (mIsGrabbed)
+        {
+            mDistance += delta;
+        }
+    }
+
     public void GrabPlatform(float distance, Vector3 hitLocation)
     {
         if (!mIsGrabbed)
@@ -117,6 +132,7 @@ public class MovingPlatform : MonoBehaviour
             }
             if (mHittingObstascle)
             {
+                transform.position = mLastGoodPosition;
                 mHittingObstascle = false;
                 _updateMaterialType();
             }
@@ -127,6 +143,7 @@ public class MovingPlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mLastGoodPosition = transform.position;
         mErrorMaterial = Resources.Load("Materials/ErrorRed", typeof(Material)) as Material;
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         if (renderer != null) {
