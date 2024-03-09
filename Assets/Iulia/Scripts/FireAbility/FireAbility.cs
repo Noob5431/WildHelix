@@ -25,13 +25,13 @@ public class FireAbility : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 4, ForceMode.Impulse);
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //    transform.GetComponent<Rigidbody>().AddForce(Vector3.up * 4, ForceMode.Impulse);
 
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, abilityMaxDistance, maskFire))
+        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, abilityMaxDistance) && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Fireplace")))
         {
             pressText.SetActive(true);
             LightFire(hit);
@@ -40,7 +40,10 @@ public class FireAbility : MonoBehaviour
 
 
         if (isOnPlatform)
+        {
             transform.parent = platformUnderPlayer.transform;
+
+        }
         else
             transform.parent = initialParent;
     }
