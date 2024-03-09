@@ -80,6 +80,9 @@ public class Movement : MonoBehaviour
     [SerializeField]
     bool canGlide;
 
+    [SerializeField]
+    float maxClimbAngle;
+
 
     private void Start()
     {
@@ -98,6 +101,12 @@ public class Movement : MonoBehaviour
             Run();
         if (isSwinging)
             SwingThrust();
+    }
+
+    private float CalculateFrictionAngle()
+    {
+        Physics.Raycast(transform.position, -transform.up, out RaycastHit hitInfo);
+        return 180 - Vector3.Angle(hitInfo.normal, -transform.up);
     }
 
     private void Update()
@@ -287,7 +296,14 @@ public class Movement : MonoBehaviour
             : new Vector2(0, Input.GetAxis("Vertical"));
         input_trans.Normalize();
         moveVector = new Vector3(input_trans.x, 0, input_trans.y);
-        if (currentLatMovTimeRemain > 0.01) moveVector = Vector3.zero;
+        if (currentLatMovTimeRemain > 0.01) moveVector = new Vector3(moveVector.x, 0, moveVector.z);
+
+        /*float frictionAngle = CalculateFrictionAngle();
+        Debug.Log(frictionAngle);
+        if (frictionAngle > maxClimbAngle)
+        {
+            moveVector = Vector3.zero;
+        }*/
     }
 
     public void OnJump()
