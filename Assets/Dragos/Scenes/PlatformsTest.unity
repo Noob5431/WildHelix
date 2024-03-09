@@ -184,7 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyToUse: 323
-  maxGrabDistance: 100
+  maxGrabDistance: 10
+  scrollSensivity: 3
 --- !u!1001 &621604639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,7 +278,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: a884ec2cac510db4cacc1cb318a4fc57, type: 2}
+      objectReference: {fileID: 2100000, guid: 162646e22218a09488f9c97908a4eb58, type: 2}
     - target: {fileID: 919132149155446097, guid: e9e9b9bbaf3b862418834096d7c5783a,
         type: 3}
       propertyPath: m_Name

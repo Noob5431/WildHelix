@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Burst.CompilerServices;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class MovingPlatform : MonoBehaviour
     private Vector3 mObstacleLoc = Vector3.zero;
     private Material mErrorMaterial;
     private Material mNormalMaterial;
+    private Material mOutlineMaterial;
     private Vector3 mHitOffset;
     private Vector3 mLastGoodPosition;
     private MovingPlatformCollision mMovingPlatformCollision;
@@ -115,7 +117,23 @@ public class MovingPlatform : MonoBehaviour
             {
                 collider.enabled = false;
             }
+            _changeOutlineVisibility(true);
             Debug.Log("Grabbed platform");
+        }
+    }
+
+    private void _changeOutlineVisibility(bool newVisibility)
+    {
+        MeshRenderer renderer = GetComponent<MeshRenderer>();
+        if (renderer == null)
+            return;
+
+        if(newVisibility){
+            renderer.materials = renderer.materials.Append(mOutlineMaterial).ToArray();
+        }
+        else
+        {
+            renderer.materials = renderer.materials.Where(val => !val.name.Contains(mOutlineMaterial.name)).ToArray();
         }
     }
 
@@ -137,6 +155,8 @@ public class MovingPlatform : MonoBehaviour
                 _updateMaterialType();
             }
 
+            _changeOutlineVisibility(false);
+
             Debug.Log("Freeze platform");
         }
     }
@@ -145,6 +165,7 @@ public class MovingPlatform : MonoBehaviour
     {
         mLastGoodPosition = transform.position;
         mErrorMaterial = Resources.Load("Materials/ErrorRed", typeof(Material)) as Material;
+        mOutlineMaterial = Resources.Load("Materials/OutlineMat", typeof(Material)) as Material;
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         if (renderer != null) {
             mNormalMaterial = renderer.material;
