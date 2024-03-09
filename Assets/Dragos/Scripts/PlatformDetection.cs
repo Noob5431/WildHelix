@@ -6,11 +6,15 @@ public class PlatformDetection : MonoBehaviour
 {
     public KeyCode keyToUse = KeyCode.Mouse0;
     public float maxGrabDistance = 10f;
+    public float scrollSensivity = 3f;
 
     private MovingPlatform mGrabbedPlatform = null;
+    private ScrollController mScrollController;
 
     void Start()
     {
+        mScrollController = new ScrollController();
+        mScrollController.sensitivity = scrollSensivity;
     }
 
     private void _ungrabPlatform()
@@ -26,6 +30,7 @@ public class PlatformDetection : MonoBehaviour
         if (mGrabbedPlatform == null)
             return;
 
+        mScrollController.Update(mGrabbedPlatform);
         mGrabbedPlatform.UpdatePlatform(Camera.main.transform.position, Camera.main.transform.forward);
     }
 
