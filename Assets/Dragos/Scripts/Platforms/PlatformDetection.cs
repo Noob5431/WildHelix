@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformDetection : MonoBehaviour
 {
-    public KeyCode keyToUse = KeyCode.Mouse0;
+    public KeyCode keyToUse = KeyCode.None;
     public float maxGrabDistance = 10f;
     public float scrollSensivity = 3f;
 

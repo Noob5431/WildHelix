@@ -9,23 +9,18 @@ public class CombineParts : MonoBehaviour
     // Start is called before the first frame update
     
 
-    void EnableParts()
+    public void EnableParts(int partType)
     {
-        if (magneticPartsCollected)
+        if (partType==1)
             magneticParts.SetActive(true);
-        if (glidePartsCollected)
+        if (partType == 2)
             glideParts.SetActive(true);
-        if (firePartsCollected)
+        if (partType == 3)
             fireParts.SetActive(true);
-        if (allPartsCollected)
+        if (partType == 4)
             allParts.SetActive(true);
     }
 
 
-    // Update is called once per frame
-    private void FixedUpdate()
-    {
-        EnableParts();
-    }
-   
+    
 }
