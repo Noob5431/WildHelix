@@ -15,6 +15,7 @@ public class FireAbility : MonoBehaviour
     [SerializeField] float abilityMaxDistance = 30;
 
     [SerializeField]GameObject pressText;
+    public KeyCode keyToUse = KeyCode.None;
 
     private void Start()
     {
@@ -31,7 +32,9 @@ public class FireAbility : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, abilityMaxDistance) && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Fireplace")))
+        if (keyToUse != KeyCode.None
+            && Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, abilityMaxDistance)
+            && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Fireplace")))
         {
             pressText.SetActive(true);
             LightFire(hit);
@@ -57,7 +60,7 @@ public class FireAbility : MonoBehaviour
     {
         ParticleSystem fireParticles = firePlace.transform.GetComponentInChildren<ParticleSystem>();
 
-        if (!fireParticles.isPlaying && Input.GetKey(KeyCode.F))
+        if (!fireParticles.isPlaying && Input.GetKey(keyToUse))
         {
             fireParticles.Play();
 

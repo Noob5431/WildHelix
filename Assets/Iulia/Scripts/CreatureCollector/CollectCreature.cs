@@ -13,7 +13,7 @@ public class CollectCreature : MonoBehaviour
         RaycastHit hit;
         
 
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, collectRange)
+        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, collectRange)
             && hit.transform.CompareTag("creature"))
         {
             collectText.gameObject.SetActive(true);
@@ -23,7 +23,10 @@ public class CollectCreature : MonoBehaviour
                 print("trieggerd");
                 hit.transform.GetComponent<Animator>().SetTrigger("Collect");
                 hit.transform.GetComponentInChildren<ParticleSystem>().Play();
+                hit.collider.GetComponent<Collectable>().collectCReature.Invoke();
                 hit.collider.enabled = false;
+
+                
             }
         }
         else collectText.gameObject.SetActive(false);
