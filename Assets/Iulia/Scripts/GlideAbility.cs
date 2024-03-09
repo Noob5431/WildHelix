@@ -46,4 +46,15 @@ public class GlideAbility : MonoBehaviour
         current_rigidbody.drag = initialDrag;
         isGliding = false;
     }
+
+    //public void OnJump()
+    //{
+    //    this.isGliding = false;
+    //    current_rigidbody.drag = initialDrag;
+    //    if (isGrounded)
+    //    {
+    //        current_rigidbody.AddForce(jumpForce * transform.up, ForceMode.VelocityChange);
+    //        //GetComponentInChildren<AudioManager>().Jump();
+    //    }
+    //}
 }

@@ -51,4 +51,6 @@ public class AbilityManager : MonoBehaviour
         print("you collected all");
         showcase.GetComponent<CombineParts>().EnableParts(4);
     }
+
+   
 }
