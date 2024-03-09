@@ -16,11 +16,13 @@ public class GroundCheck : MonoBehaviour
         }
 
         FireAbility fireAbility = GetComponentInParent<FireAbility>();
-        if(fireAbility != null)
+        print(fireAbility);
+        if (fireAbility != null)
         {
             RaycastHit hit;
             fireAbility.isOnPlatform = Physics.Raycast(transform.position, -transform.up, out hit, groundCheckLenght, LayerMask.GetMask("FirePlatform"));
             fireAbility.platformUnderPlayer = hit.collider;
+            //print(hit.collider.name);
         }
     }
 
