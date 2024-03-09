@@ -6,6 +6,7 @@ using UnityEngine;
 public class CheckpointManager : MonoBehaviour
 {
     public GameObject Player;
+    public KeyCode keyToRespawn = KeyCode.R;
 
     private int mHighestCheckpoint = -1;
     private Vector3 mRespawnLocation;
@@ -29,7 +30,7 @@ public class CheckpointManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(keyToRespawn))
         {
             if (Player != null)
             {
