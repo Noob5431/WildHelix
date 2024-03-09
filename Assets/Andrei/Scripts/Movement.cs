@@ -77,6 +77,9 @@ public class Movement : MonoBehaviour
     [SerializeField]
     float glideDrag;
     bool isGliding = false;
+    [SerializeField]
+    bool canGlide;
+
 
     private void Start()
     {
@@ -135,7 +138,7 @@ public class Movement : MonoBehaviour
         {
             OnJump();
         }
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && canGlide)
         {
             OnGlide();
         }
