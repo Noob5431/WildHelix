@@ -68,7 +68,7 @@ public class MovementGlide : MonoBehaviour
     float initialDrag;
     [SerializeField]
     float glideDrag;
-    bool isGliding = false;
+    public bool isGliding = false;
 
     private void Start()
     {
@@ -112,11 +112,11 @@ public class MovementGlide : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)
         {
-            OnGlide();
+            //OnGlide();
         }
         if (Input.GetKeyUp(KeyCode.Space) && !isGrounded)
         {
-            CancelGlide();
+            //CancelGlide();
         }
 
         if (canClimb && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle)
@@ -269,18 +269,18 @@ public class MovementGlide : MonoBehaviour
         }
     }
 
-    public void OnGlide()
-    {
-        initialDrag = current_rigidbody.drag;
-        current_rigidbody.drag = glideDrag;
-        isGliding = true;
-    }
+    //public void OnGlide()
+    //{
+    //    initialDrag = current_rigidbody.drag;
+    //    current_rigidbody.drag = glideDrag;
+    //    isGliding = true;
+    //}
 
-    public void CancelGlide()
-    {
-        current_rigidbody.drag = initialDrag;
-        isGliding = false;
-    }
+    //public void CancelGlide()
+    //{
+    //    current_rigidbody.drag = initialDrag;
+    //    isGliding = false;
+    //}
 
     void StartSwing()
     {

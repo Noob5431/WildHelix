@@ -29,9 +29,11 @@ public class AbilityManager : MonoBehaviour
     {
         isMagneticCollected = true;
 
-        GlideAbility comp = player.GetComponent<GlideAbility>();
-        if (comp != null)
-            comp.keyToUse = glideKey;
+        //GlideAbility comp = player.GetComponent<GlideAbility>();
+        //if (comp != null)
+        //    comp.keyToUse = glideKey;
+
+        player.GetComponent<Movement>().canGlide = true;
 
         showcase.GetComponent<CombineParts>().EnableParts(2);
     }

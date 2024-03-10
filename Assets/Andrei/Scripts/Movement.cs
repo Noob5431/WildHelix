@@ -78,7 +78,7 @@ public class Movement : MonoBehaviour
     float glideDrag;
     bool isGliding = false;
     [SerializeField]
-    bool canGlide;
+    public bool canGlide = false;
 
     [SerializeField]
     float maxClimbAngle;
