@@ -21,10 +21,12 @@ public class gamemanager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             AudioKeeper keeper = GameObject.Find("AudioSlideKeeper").GetComponent<AudioKeeper>();
-            musicSlider = keeper.music;
-            effectSlider = keeper.effects;
-            mouseSensitivitySlider = keeper.mouse;
-
+            if (keeper)
+            {
+                musicSlider = keeper.music;
+                effectSlider = keeper.effects;
+                mouseSensitivitySlider = keeper.mouse;
+            }
             if (musicSlider)
             {
                 musicVolume = musicSlider.value;
@@ -45,10 +47,12 @@ public class gamemanager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1 && firstTime == false)
         {
             AudioKeeper keeper = GameObject.Find("AudioSlideKeeper").GetComponent<AudioKeeper>();
-            musicSlider = keeper.music;
-            effectSlider = keeper.effects;
-            mouseSensitivitySlider = keeper.mouse;
-
+            if (keeper)
+            {
+                musicSlider = keeper.music;
+                effectSlider = keeper.effects;
+                mouseSensitivitySlider = keeper.mouse;
+            }
             if (musicSlider)
             {
                 musicSlider.value = musicVolume;

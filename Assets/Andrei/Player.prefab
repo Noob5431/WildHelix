@@ -998,7 +998,7 @@ GameObject:
   - component: {fileID: 7187445357254193974}
   - component: {fileID: 6869074594178147313}
   - component: {fileID: 430036117653351193}
-  - component: {fileID: 7936194943362177198}
+  - component: {fileID: 8205998153494608518}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1080,7 +1080,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2256346186836754849}
   m_Enabled: 1
---- !u!114 &7936194943362177198
+--- !u!114 &8205998153494608518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1399,6 +1399,7 @@ GameObject:
   - component: {fileID: 6226842575174985207}
   - component: {fileID: 3288192811375722956}
   - component: {fileID: 4387753336938438367}
+  - component: {fileID: 5439893931369836629}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1578,8 +1579,8 @@ MonoBehaviour:
   climbJumpUpSpeed: 0
   climbJumpBackSpeed: 0
   airDrag: 2
-  runWallJumpUpForce: 5
-  runWallJumpBackForce: 8
+  runWallJumpUpForce: 10
+  runWallJumpBackForce: 10
   isRunning: 0
   isWallRunning: 0
   wallRunningRotation: {x: 0, y: 0, z: 15}
@@ -1588,7 +1589,7 @@ MonoBehaviour:
   deactivateLateralMovementTime: 0
   bonusTimeToJump: 0.3
   glideDrag: 5
-  canGlide: 1
+  canGlide: 0
   maxClimbAngle: 30
 --- !u!114 &1783458336376535586
 MonoBehaviour:
@@ -1742,6 +1743,20 @@ MonoBehaviour:
   FOV_current: 0
   speed_current: 0
   appliedFov: 0
+--- !u!114 &5439893931369836629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789778556977231441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d3c1af6b6519f449854e7708a8e9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectText: {fileID: 0}
+  collectRange: 5
 --- !u!1 &3811738748961347887
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class CollectCreature : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                print("trieggerd");
+                print("triggered");
                 hit.transform.GetComponent<Animator>().SetTrigger("Collect");
                 hit.transform.GetComponentInChildren<ParticleSystem>().Play();
                 hit.collider.GetComponent<Collectable>().collectCReature.Invoke();
