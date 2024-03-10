@@ -10028,6 +10028,7 @@ MonoBehaviour:
   abilityMaxDistance: 30
   pressText: {fileID: 1655341524}
   keyToUse: 0
+  isActivated: 0
 --- !u!114 &156023635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35377,6 +35378,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1256434427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256434428}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1256434428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256434427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.37, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1364002445}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364002444
 GameObject:
   m_ObjectHideFlags: 0
@@ -35409,6 +35441,7 @@ Transform:
   m_Children:
   - {fileID: 1663540047}
   - {fileID: 568597336}
+  - {fileID: 1256434428}
   m_Father: {fileID: 842225146}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1364002446
@@ -35427,7 +35460,7 @@ MonoBehaviour:
   speed: 5
   delayStart: 0
   delayEnd: 0
-  target: {fileID: 0}
+  target: {fileID: 1256434428}
 --- !u!1 &1364318527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f2cdef2e068abd54b928d17be138eba6,
@@ -40814,7 +40847,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663540046}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a66b36968585ff24ea0aee2ec60a5445, type: 3}
   m_Name: 
@@ -46238,6 +46271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: StartScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161861557675799663, guid: 2c85b97b4bd06f9428986091e23160bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

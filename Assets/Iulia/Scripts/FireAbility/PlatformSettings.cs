@@ -12,6 +12,7 @@ public class PlatformSettings : MonoBehaviour
 
     public Vector3 GetMovePoint()
     {
+        movePoint = target.position;
         return movePoint;
     }
 
