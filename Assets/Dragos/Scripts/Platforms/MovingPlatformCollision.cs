@@ -39,6 +39,8 @@ public class MovingPlatformCollision : MonoBehaviour
     {
         if (col.gameObject.name + "_collider" == gameObject.name)
             return true;
+        if (col.isTrigger == true)
+            return true;
         return false;
     }
 
