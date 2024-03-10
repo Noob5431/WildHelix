@@ -82,7 +82,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField]
     float maxClimbAngle;
-
+    float minAngleGlobal;
+    Vector3 lowestAngleNormal;
 
     private void Start()
     {
@@ -103,11 +104,7 @@ public class Movement : MonoBehaviour
             SwingThrust();
     }
 
-    private float CalculateFrictionAngle()
-    {
-        Physics.Raycast(transform.position, -transform.up, out RaycastHit hitInfo);
-        return 180 - Vector3.Angle(hitInfo.normal, -transform.up);
-    }
+    
 
     private void Update()
     {
@@ -156,7 +153,7 @@ public class Movement : MonoBehaviour
             CancelGlide();
         }
 
-        if (canClimb && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle)
+        if (canClimb && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle && frontWallHit.collider.CompareTag("climbable"))
         {
             if (!isClimbing && climbTimer > 0) StartClimbing();
             if (climbTimer > 0) climbTimer -= Time.deltaTime;
@@ -298,12 +295,21 @@ public class Movement : MonoBehaviour
         moveVector = new Vector3(input_trans.x, 0, input_trans.y);
         if (currentLatMovTimeRemain > 0.01) moveVector = new Vector3(moveVector.x, 0, moveVector.z);
 
-        /*float frictionAngle = CalculateFrictionAngle();
-        Debug.Log(frictionAngle);
-        if (frictionAngle > maxClimbAngle)
+        /*//stop move towards high angle slope
+        if (minAngleGlobal > maxClimbAngle)
+        {
+            Debug.Log(lowestAngleNormal);
+            Vector3 projectedNormal = Vector3.ProjectOnPlane(lowestAngleNormal, transform.up);
+            projectedNormal.Normalize();
+            moveVector = Vector3.ProjectOnPlane(moveVector, projectedNormal);
+            moveVector.Normalize();
+            Debug.Log(moveVector);
+        }*/
+        if(minAngleGlobal > maxClimbAngle)
         {
             moveVector = Vector3.zero;
-        }*/
+        }
+
     }
 
     public void OnJump()
@@ -417,6 +423,37 @@ public class Movement : MonoBehaviour
         isGliding = false;
     }
 
+    void UpdateContacts(ContactPoint[] contacts)
+    {
+        float minAngle = 90;
+        Vector3 minNormal = Vector3.zero;
+        for (int i = 0; i < contacts.Length; i++)
+        {
+            float angle = Vector3.Angle(contacts[i].normal, transform.up);
+            if (angle < minAngle)
+            {
+                minAngle = angle;
+                minNormal = contacts[i].normal;
+            }
+        }
+        if (contacts.Length == 0)
+            minAngle = 0;
+        Debug.Log(minAngle);
+        minAngleGlobal = minAngle;
+        lowestAngleNormal = minNormal;
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.GetComponent<Terrain>())
+            UpdateContacts(collision.contacts);
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Terrain>())
+            UpdateContacts(collision.contacts);
+    }
     /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
