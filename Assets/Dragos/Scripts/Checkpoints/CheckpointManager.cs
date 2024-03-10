@@ -9,6 +9,7 @@ public class CheckpointManager : MonoBehaviour
     public GameObject Player;
     public KeyCode keyToRespawn = KeyCode.R;
     public TMPro.TMP_Text PressToReturnText;
+    public float LowestPoint = 0f;
 
     private int mHighestCheckpoint = -1;
     private Vector3 mRespawnLocation;
@@ -46,7 +47,7 @@ public class CheckpointManager : MonoBehaviour
 
         if (PressToReturnText != null && Player != null)
         {
-            if (Player.transform.position.y < 1.5f)
+            if (Player.transform.position.y < LowestPoint)
             {
                 PressToReturnText.gameObject.SetActive(true);
             }
