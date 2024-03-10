@@ -15,7 +15,7 @@ public class CheckpointManager : MonoBehaviour
 
     public void SetCheckpointReached(Checkpoint checkpoint)
     {
-        if (checkpoint.priority > mHighestCheckpoint)
+        if (checkpoint.priority >= mHighestCheckpoint)
         {
             mHighestCheckpoint = checkpoint.priority;
             mRespawnLocation = checkpoint.transform.position;
