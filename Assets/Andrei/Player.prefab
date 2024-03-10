@@ -1757,6 +1757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectText: {fileID: 0}
   collectRange: 5
+  nextSceneDelay: 2
 --- !u!1 &3811738748961347887
 GameObject:
   m_ObjectHideFlags: 0

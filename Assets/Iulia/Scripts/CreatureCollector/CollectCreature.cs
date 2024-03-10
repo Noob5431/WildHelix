@@ -38,7 +38,7 @@ public class CollectCreature : MonoBehaviour
                 hit.collider.GetComponent<Collectable>().collectCReature.Invoke();
                 hit.collider.enabled = false;
 
-                            
+                hasPressed = true;
             }
         }
         else collectText.gameObject.SetActive(false);

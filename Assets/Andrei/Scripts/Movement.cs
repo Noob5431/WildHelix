@@ -449,7 +449,6 @@ public class Movement : MonoBehaviour
         }
         if (contacts.Length == 0)
             minAngle = 0;
-        Debug.Log(minAngle);
         minAngleGlobal = minAngle;
     }
 

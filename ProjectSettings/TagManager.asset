@@ -8,6 +8,7 @@ TagManager:
   - creature
   - wallRun
   - climbable
+  - terrain
   layers:
   - Default
   - TransparentFX

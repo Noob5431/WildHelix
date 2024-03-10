@@ -11,6 +11,7 @@ public class GroundCheck_fara_glide : MonoBehaviour
     {
         Movement movement = GetComponentInParent<Movement>();
        movement.isGrounded = Physics.Raycast(transform.position, -transform.up, groundCheckLenght);
+       
 
     }
 

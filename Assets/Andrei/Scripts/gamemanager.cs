@@ -12,7 +12,6 @@ public class gamemanager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -71,10 +70,6 @@ public class gamemanager : MonoBehaviour
         else if(SceneManager.GetActiveScene().buildIndex == 1)
         {
             firstTime = false;
-        }
-        if(scene.buildIndex > 2)
-        {
-            Time.timeScale = 0f;
         }
     }
 

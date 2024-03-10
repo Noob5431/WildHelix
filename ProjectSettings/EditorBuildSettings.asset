@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Andrei/Scenes/MainMenu.unity
+    guid: 2ef8915eae803aa47a78a53094ea17c6
+  - enabled: 1
     path: Assets/Vlad/Scenes/Level1.unity
     guid: a8f7ff7453a37c94d975965283bbb985
   - enabled: 1
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Vlad/Scenes/Level4.unity
     guid: aae35feec6a5c734b8b1e6ae21e758cb
+  - enabled: 1
+    path: Assets/Andrei/Scenes/FinishMenu.unity
+    guid: d18d0225975c1ed4ea80302aab784267
   m_configObjects: {}
