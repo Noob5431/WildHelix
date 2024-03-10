@@ -83,7 +83,8 @@ public class Movement : MonoBehaviour
     [SerializeField]
     float maxClimbAngle;
     float minAngleGlobal;
-    Vector3 lowestAngleNormal;
+
+    bool hasWallRunJumped = false;
 
     private void Start()
     {
@@ -108,6 +109,11 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        if((!wallLeft && !wallRight))
+        {
+            hasWallRunJumped = false;
+        }
+
         //bonus jump time
         currentBonusTimeToJump -= Time.deltaTime;
 
@@ -190,9 +196,12 @@ public class Movement : MonoBehaviour
                     transform.Rotate(wallRunningRotation);
                 }
             }
-            if (bonusForce.magnitude < 0.1f)
+            if (!hasWallRunJumped)
+            {
                 current_rigidbody.velocity = new Vector3(current_rigidbody.velocity.x, 0, current_rigidbody.velocity.z);
-            if (Input.GetKeyDown(KeyCode.Space))
+                bonusForce = Vector3.zero;
+            }
+                if (Input.GetKeyDown(KeyCode.Space))
                 WallRunJump();
         }
         else
@@ -262,9 +271,9 @@ public class Movement : MonoBehaviour
         current_rigidbody.velocity = new Vector3(velocity * globalMoveVector.x, current_rigidbody.velocity.y, velocity * globalMoveVector.z) + bonusForce;
 
         //apply drag
-        if(bonusForce.magnitude > 0)
+        if(bonusForce.magnitude > 0.01)
             bonusForce = bonusForce - bonusForce.normalized * airDrag * Time.deltaTime;
-        if (bonusForce.magnitude < 0)
+        if (bonusForce.magnitude < 0.01)
             bonusForce = Vector3.zero;
     }
 
@@ -293,7 +302,7 @@ public class Movement : MonoBehaviour
             : new Vector2(0, Input.GetAxis("Vertical"));
         input_trans.Normalize();
         moveVector = new Vector3(input_trans.x, 0, input_trans.y);
-        if (currentLatMovTimeRemain > 0.01) moveVector = new Vector3(moveVector.x, 0, moveVector.z);
+        if (currentLatMovTimeRemain > 0.01) moveVector = new Vector3(0, 0, moveVector.z);
 
         /*//stop move towards high angle slope
         if (minAngleGlobal > maxClimbAngle)
@@ -398,6 +407,8 @@ public class Movement : MonoBehaviour
 
     void WallRunJump()
     {
+        hasWallRunJumped = true;
+
         current_rigidbody.velocity = new Vector3(current_rigidbody.velocity.x, 0, current_rigidbody.velocity.z);
         RaycastHit current_hit = wallRight ? wallRightHit : wallLeftHit;
         Vector3 forceToApply = transform.up * runWallJumpUpForce + current_hit.normal * runWallJumpBackForce;
@@ -440,7 +451,6 @@ public class Movement : MonoBehaviour
             minAngle = 0;
         Debug.Log(minAngle);
         minAngleGlobal = minAngle;
-        lowestAngleNormal = minNormal;
     }
 
     private void OnCollisionStay(Collision collision)

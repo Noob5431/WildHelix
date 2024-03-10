@@ -1585,7 +1585,7 @@ MonoBehaviour:
   wallRunningRotation: {x: 0, y: 0, z: 15}
   grappleRadius: 3
   lateralWallDetectionLenght: 1
-  deactivateLateralMovementTime: 5
+  deactivateLateralMovementTime: 0
   bonusTimeToJump: 0.3
   glideDrag: 5
   canGlide: 1
