@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.24515513, g: 0.086077176, b: 0.06644068, a: 1}
+  m_IndirectSpecularColor: {r: 0.24515507, g: 0.086077176, b: 0.06644068, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1088,6 +1088,7 @@ MonoBehaviour:
   Player: {fileID: 216213146}
   keyToRespawn: 114
   PressToReturnText: {fileID: 0}
+  LowestPoint: 0
 --- !u!4 &128188157 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 697158d260394f246b6f45cce990852d,
@@ -6736,6 +6737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5439893931369836629, guid: 55fb1bf1bfaed1a48ae295bc9e2336d7,
+        type: 3}
+      propertyPath: nextSceneDelay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6020423939015387949, guid: 55fb1bf1bfaed1a48ae295bc9e2336d7,
         type: 3}
@@ -12644,6 +12650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TutorialText: {fileID: 2127834344}
+  TutorialString: 
   TimeToWait: 5
 --- !u!4 &1434593322
 Transform:

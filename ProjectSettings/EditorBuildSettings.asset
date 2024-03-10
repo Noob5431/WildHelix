@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Vlad/Scenes/Level1.unity
     guid: a8f7ff7453a37c94d975965283bbb985
+  - enabled: 1
+    path: Assets/Stefan/Test_scenes/Level2 c.unity
+    guid: 0d883c6277f56ed4aaf0e8490839c4eb
+  - enabled: 1
+    path: Assets/Vlad/Scenes/Level3.unity
+    guid: e1ae879bbc441554c89e3a870bbf60ea
+  - enabled: 1
+    path: Assets/Vlad/Scenes/Level4.unity
+    guid: aae35feec6a5c734b8b1e6ae21e758cb
   m_configObjects: {}

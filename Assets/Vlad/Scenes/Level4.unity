@@ -7878,10 +7878,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1092336009812174262, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092336009812174262, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -159
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701485421653048882, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13.999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701485421653048882, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -152.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2152862254464210125, guid: a4e617afc1c718a4ea7741aef0e51727,
         type: 3}
       propertyPath: m_Name
       value: Canvas (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746221744968267654, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 459.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746221744968267654, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -122.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181599548628482738, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 455.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181599548628482738, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -127.73
       objectReference: {fileID: 0}
     - target: {fileID: 8343998651898926654, guid: a4e617afc1c718a4ea7741aef0e51727,
         type: 3}
@@ -31255,10 +31295,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1092336009812174262, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092336009812174262, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701485421653048882, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1701485421653048882, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -146.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2152862254464210125, guid: a4e617afc1c718a4ea7741aef0e51727,
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746221744968267654, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 458.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746221744968267654, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -122.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181599548628482738, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 458.50006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181599548628482738, guid: a4e617afc1c718a4ea7741aef0e51727,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -123.434135
       objectReference: {fileID: 0}
     - target: {fileID: 8343998651898926654, guid: a4e617afc1c718a4ea7741aef0e51727,
         type: 3}
@@ -68936,6 +69016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectText: {fileID: 1188731446}
   collectRange: 5
+  nextSceneDelay: 2
 --- !u!114 &1690512071
 MonoBehaviour:
   m_ObjectHideFlags: 0

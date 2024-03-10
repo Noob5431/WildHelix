@@ -2,14 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CollectCreature : MonoBehaviour
 {
     [SerializeField] TMP_Text collectText;
     [SerializeField] float collectRange = 5;
+    [SerializeField] float nextSceneDelay;
+    bool hasPressed = false;
 
     private void FixedUpdate()
     {
+        if(hasPressed)
+        {
+            nextSceneDelay -= Time.deltaTime;
+        }
+        if(nextSceneDelay<0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
         RaycastHit hit;
         
 
@@ -26,7 +38,7 @@ public class CollectCreature : MonoBehaviour
                 hit.collider.GetComponent<Collectable>().collectCReature.Invoke();
                 hit.collider.enabled = false;
 
-                
+                            
             }
         }
         else collectText.gameObject.SetActive(false);

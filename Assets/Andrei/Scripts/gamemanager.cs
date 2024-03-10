@@ -20,7 +20,9 @@ public class gamemanager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            AudioKeeper keeper = GameObject.Find("AudioSlideKeeper").GetComponent<AudioKeeper>();
+            AudioKeeper keeper = null;
+            if (GameObject.Find("AudioSlideKeeper"))
+                keeper = GameObject.Find("AudioSlideKeeper").GetComponent<AudioKeeper>();
             if (keeper)
             {
                 musicSlider = keeper.music;
