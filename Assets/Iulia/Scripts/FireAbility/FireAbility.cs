@@ -85,12 +85,12 @@ public class FireAbility : MonoBehaviour
     {
         PlatformSettings platformSettings = platform.GetComponent<PlatformSettings>();
 
-        Vector3 initPos = platform.transform.localPosition;
-        LeanTween.moveLocal(platform.gameObject, platformSettings.GetMovePoint(), platformSettings.GetSpeed())
+        Vector3 initPos = platform.transform.position;
+        LeanTween.move(platform.gameObject, platformSettings.GetMovePoint(), platformSettings.GetSpeed())
             .setDelay(platformSettings.GetDelayStart())
             .setOnComplete(delegate () {
                 //Stop the flame and move the platform back when platform reach its destination
-                LeanTween.moveLocal(platform.gameObject, initPos, platformSettings.GetSpeed())
+                LeanTween.move(platform.gameObject, initPos, platformSettings.GetSpeed())
                 .setDelay(platformSettings.GetDelayEnd())
                 .setOnComplete(delegate() { fireParticles.Stop(); }) ;
                 
