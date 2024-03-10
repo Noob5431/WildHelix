@@ -6,6 +6,7 @@ using TMPro;
 public class Tutorial : MonoBehaviour
 {
     public TMPro.TMP_Text TutorialText;
+    public string TutorialString = "";
     public float TimeToWait = 5f;
 
     private bool mShown = false;
@@ -25,8 +26,13 @@ public class Tutorial : MonoBehaviour
         return false;
     }
 
-    IEnumerator hideTutorial()
+    IEnumerator showTutorial()
     {
+        TutorialText.gameObject.SetActive(true);
+        if (TutorialString != "")
+        {
+            TutorialText.text = TutorialString;
+        }
         yield return new WaitForSeconds(TimeToWait);
         TutorialText.gameObject.SetActive(false);
         yield return null;
@@ -39,9 +45,8 @@ public class Tutorial : MonoBehaviour
 
         if (mShown == false)
         {
-            TutorialText.gameObject.SetActive(true);
             mShown = true;
-            StartCoroutine(hideTutorial());
+            StartCoroutine(showTutorial());
         }
     }
 
