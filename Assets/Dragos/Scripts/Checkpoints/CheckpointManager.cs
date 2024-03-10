@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class CheckpointManager : MonoBehaviour
 {
     public GameObject Player;
     public KeyCode keyToRespawn = KeyCode.R;
+    public TMPro.TMP_Text PressToReturnText;
 
     private int mHighestCheckpoint = -1;
     private Vector3 mRespawnLocation;
@@ -39,6 +41,18 @@ public class CheckpointManager : MonoBehaviour
             else
             {
                 Debug.Log("PLAYER IS NULL!");
+            }
+        }
+
+        if (PressToReturnText != null && Player != null)
+        {
+            if (Player.transform.position.y < 1.5f)
+            {
+                PressToReturnText.gameObject.SetActive(true);
+            }
+            else
+            {
+                PressToReturnText.gameObject.SetActive(false);
             }
         }
     }
