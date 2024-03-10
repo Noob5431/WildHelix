@@ -78,10 +78,10 @@ Material:
     - _SurfaceNoiseStrength: 12.2
     - _smoothness: 0
     m_Colors:
-    - _BaseColor: {r: 0.5283019, g: 0.075386405, b: 0.05731578, a: 0}
+    - _BaseColor: {r: 0.33962262, g: 0.053918254, b: 0.0240299, a: 0}
     - _BubblesEmission: {r: 0.9622642, g: 0.37721217, b: 0, a: 0}
-    - _Flow: {r: 0, g: 1, b: 0, a: 0}
+    - _Flow: {r: 0, g: 0.5, b: 0, a: 0}
     - _LocalDisplacementStrength: {r: 0, g: 0, b: 0, a: 0}
-    - _SplurColor: {r: 0.084905684, g: 0.04045035, b: 0.023629412, a: 0}
-    - _SplurEmission: {r: 0.01886791, g: 0.0063915933, b: 0.0031149846, a: 0}
+    - _SplurColor: {r: 0.0754717, g: 0.026076896, b: 0.009611962, a: 0}
+    - _SplurEmission: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
