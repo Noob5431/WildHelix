@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
-    private bool isMagneticCollected, isFireCollected, isGlideCollected, isAllCollected;
+    [SerializeField] bool isMagneticCollected, isFireCollected, isGlideCollected, isAllCollected;
     public KeyCode magneticKey= KeyCode.Mouse0, fireKey=KeyCode.F, glideKey=KeyCode.Space;
     [SerializeField] GameObject player;
     [SerializeField] GameObject showcase;
+
+   
 
 
     public void CollectMagnetic()

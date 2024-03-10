@@ -15,7 +15,8 @@ public class FireAbility : MonoBehaviour
     [SerializeField] float abilityMaxDistance = 30;
 
     [SerializeField]GameObject pressText;
-    public KeyCode keyToUse = KeyCode.None;
+    public KeyCode keyToUse = KeyCode.F;
+    public bool isActivated;
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class FireAbility : MonoBehaviour
 
         RaycastHit hit;
 
-        if (keyToUse != KeyCode.None
+        if (((keyToUse != KeyCode.None)||isActivated)
             && Physics.Raycast(transform.position, Camera.main.transform.forward, out hit, abilityMaxDistance)
             && (hit.collider.gameObject.layer == LayerMask.NameToLayer("Fireplace")))
         {
