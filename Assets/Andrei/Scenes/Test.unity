@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 287637993}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: climbable
+  m_TagString: wallRun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,7 +355,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.98, y: 5.116, z: -3.2949593}
-  m_LocalScale: {x: 100, y: 10, z: 1}
+  m_LocalScale: {x: 100, y: 44.01, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -759,8 +759,8 @@ Transform:
   m_GameObject: {fileID: 986802250}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.98, y: 5.116, z: 10}
-  m_LocalScale: {x: 100, y: 10, z: 1}
+  m_LocalPosition: {x: -6.98, y: 5.116, z: 3.9}
+  m_LocalScale: {x: 100, y: 69.66, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1646,7 +1646,7 @@ PrefabInstance:
     - target: {fileID: 729161712800602520, guid: 55fb1bf1bfaed1a48ae295bc9e2336d7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.48
+      value: 45.51
       objectReference: {fileID: 0}
     - target: {fileID: 729161712800602520, guid: 55fb1bf1bfaed1a48ae295bc9e2336d7,
         type: 3}
@@ -1656,7 +1656,7 @@ PrefabInstance:
     - target: {fileID: 729161712800602520, guid: 55fb1bf1bfaed1a48ae295bc9e2336d7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.5
+      value: 2.49
       objectReference: {fileID: 0}
     - target: {fileID: 729161712800602520, guid: 55fb1bf1bfaed1a48ae295bc9e2336d7,
         type: 3}
@@ -1697,11 +1697,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020423939015387949, guid: 55fb1bf1bfaed1a48ae295bc9e2336d7,
-        type: 3}
-      propertyPath: glideDrag
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
